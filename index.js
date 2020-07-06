@@ -7,19 +7,21 @@ const faceCanvas = document.querySelector(".face");
 const faceCtx = faceCanvas.getContext("2d");
 
 const faceDetector = new window.FaceDetector();
-const optionsInputs = document.querySelectorAll('.controls input[type="range"]')
+const optionsInputs = document.querySelectorAll(
+  '.controls input[type="range"]'
+);
 const options = {
- SIZE = 10,
- SCALE = 2,
+  SIZE: 10,
+  SCALE: 2,
+};
+
+function handleOption(event) {
+  const { value, name } = event.currentTarget;
+
+  options[name] = parseFloat(value);
 }
 
-function handleoption(event) {
-    const {value, name} = event.currentTarget;
-
-    options[name] = parseFloat(value)
-}
-
-optionsInputs.forEach(input => input.addEventListener('input', handleOption))
+optionsInputs.forEach((input) => input.addEventListener("input", handleOption));
 // write a function that will populate the users video
 
 async function populateVideo() {
